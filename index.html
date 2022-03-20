@@ -238,7 +238,6 @@
     }
     $(document).on("click",".project",function() {
       const id = 'https://raw.githubusercontent.com/HsuShihHsueh/' + $(this).attr("id") + '/HEAD/introduction.json';
-      console.log(id);
       $.getJSON(id, (data) => {
         document.getElementById('popup-name').innerText = data["project_"+ln];
         document.getElementById('popup-description').innerText = data['description_'+ln];
