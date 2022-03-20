@@ -200,7 +200,7 @@
         for (var p in projects){
           const class_project = document.createElement("div");
           class_project.id = projects[p].split('/')[0];
-          console.log(projects[p].split('/')[0]);
+          class_project.className = 'project';
           element.appendChild(class_project); 
         }
         for (var p in projects){
