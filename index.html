@@ -192,16 +192,26 @@
   <script type="text/javascript">
     let ln = "zh";
     reload_project();
+    function doesFileExist(urlToFile) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('HEAD', urlToFile, false);
+      xhr.send();
+      return xhr.status !== 404;
+    }
     function reload_project(ln='zh') {    
-      $.getJSON("main/project.json", (data) => {
-        const projects = data['project'];
+      $.getJSON("https://api.github.com/users/HsuShihHsueh/repos", (data) => {
+        const projects = [];
         const element = document.getElementById("project");
         element.innerHTML = '';
-        for (var p in projects){
-          const class_project = document.createElement("div");
-          class_project.id = projects[p];
-          class_project.className = 'project';
-          element.appendChild(class_project); 
+        for (d in data){
+          let url = 'https://raw.githubusercontent.com/HsuShihHsueh/' + data[d].name + '/HEAD/introduction.json';
+          if(doesFileExist(url)){
+            const class_project = document.createElement("div");
+            class_project.id = data[d].name;
+            class_project.className = 'project';
+            element.appendChild(class_project); 
+            projects.push(data[d].name);
+          }
         }
         for (var p in projects){
           const project = 'https://raw.githubusercontent.com/HsuShihHsueh/' + projects[p] + '/HEAD/introduction.json'; 
