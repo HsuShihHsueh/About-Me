@@ -182,7 +182,7 @@
     <div id="popup-resume">
       <div class="popup-wrap">
         <div class="popup-box" id="popup-box-resume">
-          <embed src="https://drive.google.com/uc?export=view&id=1EoF8YaqrR0We8QZQm9agS_T3Pwme3PkE" type="application/pdf" width="100%" height="100%" id='embed-pdf'/>
+          <embed src="https://drive.google.com/uc?export=view&id=1EoF8YaqrR0We8QZQm9agS_T3Pwme3PkE" loading="lazy" type="application/pdf" width="100%" height="100%" id='embed-pdf'/>
         </div>
       </div>
     </div>
@@ -192,26 +192,18 @@
   <script type="text/javascript">
     let ln = "zh";
     reload_project();
-    function doesFileExist(urlToFile) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('HEAD', urlToFile, false);
-      xhr.send();
-      return xhr.status !== 404;
-    }
-    function reload_project(ln='zh') {    
+    function reload_project(ln='zh') {  
       $.getJSON("https://api.github.com/users/HsuShihHsueh/repos", (data) => {
         const projects = [];
         const element = document.getElementById("project");
         element.innerHTML = '';
         for (d in data){
           let url = 'https://raw.githubusercontent.com/HsuShihHsueh/' + data[d].name + '/HEAD/introduction.json';
-          if(doesFileExist(url)){
-            const class_project = document.createElement("div");
-            class_project.id = data[d].name;
-            class_project.className = 'project';
-            element.appendChild(class_project); 
-            projects.push(data[d].name);
-          }
+          const class_project = document.createElement("div");
+          class_project.id = data[d].name;
+          class_project.className = 'project';
+          element.appendChild(class_project); 
+          projects.push(data[d].name);
         }
         for (var p in projects){
           const project = 'https://raw.githubusercontent.com/HsuShihHsueh/' + projects[p] + '/HEAD/introduction.json'; 
@@ -242,7 +234,11 @@
                   class_project_description.innerText = data['description_'+ln];
                 class_project_right.appendChild(class_project_description);
               class_project.appendChild(class_project_right);     
-          });         
+          })
+          .fail( ()=>{
+            var class_project = document.getElementById(project.split('/')[4]);
+            class_project.remove();
+          });       
         }
       });
     }
