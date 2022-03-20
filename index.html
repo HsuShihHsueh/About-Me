@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <title>About Me</title>
+    <link rel="icon" type="image/png" href="main/icon.svg">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flexslider@2.6.0/flexslider.css" />
+    <style>
+      body {
+        margin: 0%;
+        background: linear-gradient(0deg, #0A85BE 40%, #075AA0 50%);
+        background-attachment: fixed;
+      }
+      .circle {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+      }
+      .flex-margin {
+        display: flex;
+        justify-content: space-between;    
+        background-color: #8CA862;
+        margin: 0;
+        padding: 0.5% 2%;
+      }
+      .flex-left {
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        text-decoration: none;
+        color: inherit;
+      }
+      .flex-left:hover {
+        opacity:0.6;
+      }
+      .flex-left * {
+        padding: 0% 2%;
+      }
+      .flex-left h3 {
+        font-size: 180%;
+        white-space:nowrap;
+      }
+      .flex-right {
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        padding: 0% 4%;
+      }
+      .flex-right * {
+        padding: 0% 5%;
+      } 
+      .flex-right *:hover {
+        opacity:0.6;
+      }    
+      .project {
+        display: flex;
+        background-color: white;
+        border-radius: 30px;
+        padding: 0.3% 1%;
+        margin: 1% 12%;
+        color: inherit;
+        text-decoration: none;
+      }  
+      .project-left {
+        display: flex;
+        align-items: center;
+      }    
+      .project-thumbnail {
+        border-width: 0px;
+        border-radius: 30px;
+        padding: 0%;
+        margin: 0%; 
+        width: 200px;
+        height:113px ;
+        object-fit: cover;
+        box-shadow: 1px 1px 3px black;
+      }
+      .project-right {
+        padding: 0% 3% 0% 1.5%;
+      }
+      .project-right *{
+        margin: 0.6% 0%;
+      }
+      .project-hashtag {
+        display: flex;
+      }
+      .project-hashtag *{
+        margin: 0% 2% 0% 0%;
+        padding: 0% 2%;
+        text-align: center;
+        background-color: indianred;
+        border-radius: 10px;
+      }
+      .project-hashtag *:hover {
+        background-color: rgba(205, 92, 92, 0.671);
+      }
+      #popup {
+        display: none;
+      }   
+      .popup-wrap {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        content: '';
+        background: rgba(0, 0, 0, 0.85);
+      }
+      .popup-box {
+        margin: 5% 15%;
+        padding: 5% 3%;
+        box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+        border-radius: 30px;
+        background: #fff;
+        text-align: center;
+        display: flex;
+      }  
+      .popup-right {
+        text-align: left;
+        padding: 0% 0% 0% 3%;
+      }
+      .popup-link * {
+        margin: 0% 2% 0% 0%;
+      }
+      #popup-resume {
+        display: none;
+      }
+      #popup-box-resume {
+        height: 90%;
+        margin: 2% 16%;
+        padding: 0.5% 0.5%;
+      }
+      #embed-pdf {
+        border-radius: 30px;
+      }
+      .slides {
+        display: -webkit-flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='flex-margin'>
+        <a href="http://localhost:8000/about_me.html" class='flex-left' title="home page">
+          <img src="https://avatars.githubusercontent.com/u/77485425?v=4" class='circle'> 
+          <h3>Shih-Hsueh Hsu</h3>          
+        </a>
+        
+        <div class='flex-right'>
+          <!-- icon from 'https://www.flaticon.com/' -->
+          <h1 id="ln">中</h1>
+          <a id="resume"><img src="https://cdn-icons-png.flaticon.com/512/2427/2427488.png" class='circle' title="resume" style="border-radius:0px"></a>
+          <a href="https://www.youtube.com/channel/UCAPf1GY_CILIOZKmdZ-Ns1w"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class='circle' title="youtube"></a>
+          <a href="https://github.com/HsuShihHsueh"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" class='circle' title="github"></a> 
+          <a href="https://www.linkedin.com/in/%E4%BB%95%E5%AD%B8-%E8%A8%B1-32838520a/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class='circle' title="linkdin"></a> 
+        </div>
+    </div>
+    <div id="project"></div>
+    <div id="popup">
+      <div class="popup-wrap">
+        <div class="popup-box">      
+          <div class="popup-left">
+            <div class="flexslider" id="slider" style="width:300px;">
+              <ul class="slides" id="slides">
+                <li><img src="http://img.youtube.com/vi/yXwf9eVj6kQ/maxresdefault.jpg"></li>
+              </ul>
+            </div>
+          </div>
+          <div class="popup-right">
+            <h2 id="popup-name"></h2>
+            <h4 id="popup-description"></h4>   
+            <h4 id="popup-date"></h4> </h4>
+            <div class="popup-link">
+              <a id="popup-youtube"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class='circle' title="youtube"></a>
+              <a id="popup-github"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" class='circle' title="github"></a>     
+            </div>          
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="popup-resume">
+      <div class="popup-wrap">
+        <div class="popup-box" id="popup-box-resume">
+          <embed src="https://drive.google.com/uc?export=view&id=1EoF8YaqrR0We8QZQm9agS_T3Pwme3PkE" type="application/pdf" width="100%" height="100%" id='embed-pdf'/>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.3/jquery.flexslider.js"></script>
+  <script type="text/javascript">
+    let ln = "zh";
+    reload_project();
+    function reload_project(ln='zh') {    
+      $.getJSON("main/project.json", (data) => {
+        const projects = data['project'];
+        const element = document.getElementById("project");
+        element.innerHTML = '';
+        for (var p in projects){
+          const class_project = document.createElement("div");
+          class_project.id = projects[p].split('/')[0];
+          console.log(projects[p].split('/')[0]);
+          element.appendChild(class_project); 
+        }
+        for (var p in projects){
+          const project = 'https://raw.githubusercontent.com/HsuShihHsueh/' + projects[p] + '/introduction.json'; 
+          $.getJSON(project, (data) => { 
+            var class_project = document.getElementById(data['name']);
+              var class_project_left = document.createElement("div");
+                class_project_left.className = 'project-left';
+                var class_project_left_img = document.createElement("img");
+                  class_project_left_img.src = data['thumbnail'];
+                  class_project_left_img.className = 'project-thumbnail';
+                class_project_left.appendChild(class_project_left_img);
+              class_project.appendChild(class_project_left);
+              var class_project_right = document.createElement("div");
+                class_project_right.className = 'project-right';
+                var class_project_name = document.createElement("h2");
+                  class_project_name.innerText = data["project_"+ln];
+                class_project_right.appendChild(class_project_name);
+                var class_project_hashtag = document.createElement("div");
+                  class_project_hashtag.className = 'project-hashtag';
+                  for(h in data['hashtag']){
+                    var class_project_hashtag_h3 = document.createElement("h3");
+                    class_project_hashtag_h3.innerText = data['hashtag'][h];
+                    class_project_hashtag.appendChild(class_project_hashtag_h3);
+                  }
+                class_project_right.appendChild(class_project_hashtag);
+                var class_project_description = document.createElement("h4");
+                  class_project_description.className = 'project-description';
+                  class_project_description.innerText = data['description_'+ln];
+                class_project_right.appendChild(class_project_description);
+              class_project.appendChild(class_project_right);     
+          });         
+        }
+      });
+    }
+    $(document).on("click",".project",function() {
+      const id = $(this).attr("id") + '/introduction.json';
+      $.getJSON(id, (data) => {
+        document.getElementById('popup-name').innerText = data["project_"+ln];
+        document.getElementById('popup-description').innerText = data['description_'+ln];
+        document.getElementById('popup-date').innerText = data['date'];
+        document.getElementById('popup-youtube').href  = data['youtube'];
+        document.getElementById('popup-github').href  = data['github'];
+        document.getElementById('popup-youtube').style = (data['youtube']=="") ? "pointer-events:none;opacity:0.5;" : "";
+        document.getElementById('popup-github').style = (data['github']=="") ? "pointer-events:none;opacity:0.5;" : "";
+        let last_pic_count = document.getElementById('slides').childElementCount;
+        for (let i = last_pic_count-1; i>=0; i--) {
+          $('.flexslider').data('flexslider').removeSlide(i);
+        }    
+        for (let p in data['picture']) {
+          const src = data['picture'][p];
+          const num = (p==0)?1:0;
+          const str = `<li style="display: block; z-index: ${num+1}; opacity: ${num};"><img src="${src}"></li>`;
+          $('.flexslider').data('flexslider').addSlide(str);
+        }
+      });
+      $('#popup').fadeIn(250);
+    });
+    $(document).on("click",".popup-wrap",function() {
+      if ($(this).has(event.target).length == 0) {
+        $("#popup").fadeOut(200);
+        $("#popup-resume").fadeOut(200);
+      }
+    });
+    $(document).on("click","#resume",function() {
+      const href = $(this).attr("href");
+      $('#popup-resume').fadeIn(250);
+    });  
+    $(document).on("click","#ln",function() {
+      const id = $(this).text();
+      console.log(id);
+      if (id == "中"){
+        document.getElementById('ln').innerText = "EN";
+        document.getElementById('ln').style= "font-size:140%";
+        reload_project(ln="en");
+      }
+      else if (id == "EN"){
+        document.getElementById('ln').innerText = "中";
+        document.getElementById('ln').style= "font-size:200%";
+        reload_project(ln="zh");
+      }    
+    });
+    $(function() {
+      $("#slider").flexslider({
+      });
+    });
+    
+  </script>
+</html>
+
+
+
