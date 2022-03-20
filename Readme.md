@@ -1,3 +1,3 @@
 # About Me
 
-![link](https://hsushihhsueh.github.io/About-Me/index.html)
+<a href="https://hsushihhsueh.github.io/About-Me/index.html">link</a>
