@@ -199,12 +199,12 @@
         element.innerHTML = '';
         for (var p in projects){
           const class_project = document.createElement("div");
-          class_project.id = projects[p].split('/')[0];
+          class_project.id = projects[p];
           class_project.className = 'project';
           element.appendChild(class_project); 
         }
         for (var p in projects){
-          const project = 'https://raw.githubusercontent.com/HsuShihHsueh/' + projects[p] + '/introduction.json'; 
+          const project = 'https://raw.githubusercontent.com/HsuShihHsueh/' + projects[p] + '/HEAD/introduction.json'; 
           $.getJSON(project, (data) => { 
             var class_project = document.getElementById(data['name']);
               var class_project_left = document.createElement("div");
@@ -237,7 +237,8 @@
       });
     }
     $(document).on("click",".project",function() {
-      const id = $(this).attr("id") + '/introduction.json';
+      const id = 'https://raw.githubusercontent.com/HsuShihHsueh/' + $(this).attr("id") + '/HEAD/introduction.json';
+      console.log(id);
       $.getJSON(id, (data) => {
         document.getElementById('popup-name').innerText = data["project_"+ln];
         document.getElementById('popup-description').innerText = data['description_'+ln];
