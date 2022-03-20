@@ -1,3 +1,4 @@
 # About Me
 
-<a href="https://hsushihhsueh.github.io/About-Me/index.html">link</a>
+Personal website in
+<a href="https://hsushihhsueh.github.io/">https://hsushihhsueh.github.io/</a>.
