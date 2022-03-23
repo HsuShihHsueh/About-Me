@@ -78,15 +78,18 @@
       }
       .project-right {
         padding: 0% 3% 0% 1.5%;
+        box-sizing: border-box; 
       }
       .project-right *{
         margin: 0.6% 0%;
       }
       .project-hashtag {
         display: flex;
+        flex-wrap: wrap;
+        margin: 0% 0% -2% 0%;
       }
       .project-hashtag *{
-        margin: 0% 2% 0% 0%;
+        margin: 0% 2% 2% 0%;
         padding: 0% 2%;
         text-align: center;
         background-color: indianred;
@@ -113,9 +116,12 @@
         box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
         border-radius: 30px;
         background: #fff;
-        text-align: center;
         display: flex;
       }  
+      .popup-left {
+        display: flex;
+        align-items: center;
+      }
       .popup-right {
         text-align: left;
         padding: 0% 0% 0% 3%;
@@ -135,10 +141,71 @@
         border-radius: 30px;
         width: 100%;
       }
+      .flexslider {
+        width: 300px;
+      }
       .slides {
         display: -webkit-flex;
         align-items: center;
       }
+      .project {
+        display: flex;
+        background-color: white;
+        border-radius: 30px;
+        padding: 0.3% 1%;
+        margin: 1% 12%;
+        color: inherit;
+        text-decoration: none;
+      }  
+      @media only screen and (max-aspect-ratio: 1/1)  {
+        .project {
+          margin: 3% 7%;
+          padding: 2% 1%;
+        }
+        .flex-margin {
+          display: block;
+        }
+        .flex-left h3{
+          margin: 2% 0%;
+        }
+        .flex-right h1 {
+          margin: 2%;
+        }
+        .flex-right * {
+            padding: 0% 2%;
+        }
+        .project {
+          display: block;
+        }
+        .flex-right a img{
+          height: 35px;
+          width: 35px;
+        }
+        .project-left {
+          justify-content: center;
+        }
+        .project-hashtag {
+          justify-content: center;
+        } 
+        .project-right h2{
+          text-align: center;
+        }        
+      }
+      @media only screen and (max-aspect-ratio: 3/2) {
+        #project-box {
+          display: block;
+        }
+        .flexslider {
+          width: 70%;
+        }
+        .popup-left {
+          justify-content: center;
+        }
+        .popup-right {
+          text-align: center;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -160,9 +227,9 @@
     <div id="project"></div>
     <div id="popup">
       <div class="popup-wrap">
-        <div class="popup-box">      
+        <div class="popup-box" id="project-box">      
           <div class="popup-left">
-            <div class="flexslider" id="slider" style="width:300px;">
+            <div class="flexslider" id="slider">
               <ul class="slides" id="slides">
                 <li><img src="http://img.youtube.com/vi/yXwf9eVj6kQ/maxresdefault.jpg"></li>
               </ul>
@@ -183,7 +250,6 @@
     <div id="popup-resume">
       <div class="popup-wrap">
         <div class="popup-box" id="popup-box-resume">
-          <!-- <embed src="https://drive.google.com/uc?export=view&id=1EoF8YaqrR0We8QZQm9agS_T3Pwme3PkE" type="application/pdf" width="100%" height="100%" id='embed-pdf'/> -->
           <iframe src="https://drive.google.com/file/d/1EoF8YaqrR0We8QZQm9agS_T3Pwme3PkE/preview" id='embed-pdf'></iframe>
         </div>
       </div>
